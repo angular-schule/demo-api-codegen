@@ -1,0 +1,32 @@
+<div class="card mb-4">
+  <div class="card-body bg-light">
+
+    <img class="img-thumbnail float-right"
+         src="{{ book?.thumbnails[0].url }}" width="150">
+
+    <div class="card-title">
+      <h2>
+        {{ book.title }}
+        <span class="badge badge-secondary">
+          {{ book.rating }}
+        </span>
+      </h2>
+
+    </div>
+    <p>
+      {{ book.description }}
+    </p>
+
+    <button
+      [disabled]="!rs.rateDownAllowed(book)"
+      (click)="rateDown()"
+      class="mr-2 btn btn-secondary">👎</button>
+
+    <button
+      testRateUpButton
+      [disabled]="!rs.rateUpAllowed(book)"
+      (click)="rateUp()"
+      class="btn btn-primary mr-2">👍</button>
+
+  </div>
+</div>

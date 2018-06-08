@@ -1,0 +1,67 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { Book } from './book';
+import { catchError, retry } from 'rxjs/operators';
+import { BookService } from '@angular-schule/book-monkey-api';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BookStoreService {
+
+  constructor() { }
+
+  getAllHardcoded(): Observable<Book[]> {
+
+    return of([{
+      'isbn': '9783864903571',
+      'title': 'Angular',
+      'authors': ['Johannes Hoppe', 'Ferdinand Malcher', 'Danny Koppenhagen', 'Gregor Woiwode'],
+      'published': '2017-04-01T12:00:00.000Z',
+      'subtitle': 'Grundlagen, fortgeschrittene Techniken und Best Practices mit TypeScript'
+                + '- ab Angular 4, inklusive NativeScript und Redux',
+      'rating': 5,
+      'thumbnails': [{
+        'url': 'assets/angular-buch_dpunkt.jpg',
+        'title': 'Front Cover'
+      }],
+      'description': 'Mit Angular setzen Sie auf ein modernes und modulares Web-Framework.'
+                   + 'Dieses Buch stellt Ihnen die Bausteine von Angular, viele Best Practices'
+                   + ' und die notwendigen Werkzeuge vor. Beginnen Sie Ihren Einstieg in die'
+                   + 'Welt von Angular mit einer praxisnahen Einführung.\n'
+    }, {
+      'isbn': '9783836239141',
+      'title': 'Angular',
+      'authors': ['Christoph Höller'],
+      'published': '2017-01-30T00:00:00.000Z',
+      'subtitle': 'Das umfassende Handbuch zum JavaScript-Framework',
+      'rating': 4,
+      'thumbnails': [{
+        'url': 'assets/angular-buch_rheinwerk.jpg',
+        'title': 'Front Cover'
+      }],
+      'description': 'Angular ist das JavaScript-Framework für professionelle Webapplikationen'
+                   + ' – hier lernen Sie es umfassend kennen! Christoph Höller macht Sie mit'
+                   + ' allen relevanten Technologien, Standards und Kernbestandteilen des'
+                   + ' Angular-Frameworks vertraut. Am Praxisbeispiel einer Projektverwaltung'
+                   + ' führt Ihnen der Webprofi die Komponenten und Konzepte von Angular praxisnah vor.'
+    }, {
+      'isbn': '9783960090267',
+      'title': 'Angular',
+      'authors': ['Manfred Steyer', 'Daniel Schwab'],
+      'published': '2017-08-28T00:00:00.000Z',
+      'subtitle': 'Das Praxisbuch zu Grundlagen und Best Practices',
+      'rating': 4,
+      'thumbnails': [{
+        'url': 'assets/angular-buch_oreilly.jpg',
+        'title': 'Front Cover'
+      }],
+      'description': 'Die Komplexität moderner JavaScript- und Single-Page-Anwendungen (SPA) '
+                   + ' ist eine Herausforderung für jeden Entwickler. Entwickler begrüßen daher sehr,'
+                   + ' dass Angular sie bei wiederkehrenden Aufgaben wie Datenbindung, Validierung '
+                   + 'und Routing unterstützt. Auch der Support durch Google und eine riesige Community'
+                   + ' spricht dafür, die leistungsfähige Plattform zu nutzen.'
+    }]);
+  }
+}

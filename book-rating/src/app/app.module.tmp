@@ -3,12 +3,15 @@ import { BookRatingService } from './shared/book-rating.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookComponent } from './book/book.component';
+
+import { ApiModule, BASE_PATH } from '@angular-schule/book-monkey-api';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,8 +24,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ApiModule,
     BrowserAnimationsModule
   ],
+  providers: [{
+    provide: BASE_PATH,
+    useValue: environment.API_BASE_PATH
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
