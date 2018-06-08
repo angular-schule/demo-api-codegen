@@ -1,0 +1,6 @@
+{
+    "npmName": "@angular-schule/book-monkey-api",
+    "npmVersion": "0.0.1",
+    "snapshot": true,
+    "ngVersion": "6.0.0"
+}
