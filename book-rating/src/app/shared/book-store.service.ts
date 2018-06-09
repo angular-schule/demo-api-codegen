@@ -10,7 +10,11 @@ import { BookService } from '@angular-schule/book-monkey-api';
 })
 export class BookStoreService {
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
+
+  getAllViaSwagger(): Observable<Book[]> {
+    return this.bookService.booksGet();
+  }
 
   getAllHardcoded(): Observable<Book[]> {
 

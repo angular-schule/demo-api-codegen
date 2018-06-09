@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-schule/book-monkey-api": "0.0.1-SNAPSHOT.201805251040",
     "@angular/animations": "^6.0.3",
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
