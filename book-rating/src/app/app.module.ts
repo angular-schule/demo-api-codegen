@@ -10,7 +10,10 @@ import { BookComponent } from './book/book.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 
-// Swagger
+import { ApolloModule, Apollo } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +25,25 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ApiModule
+
+    // Swagger
+    ApiModule,
+
+    // Apollo
+    HttpLinkModule,
+    ApolloModule
   ],
   providers: [
     { provide: BASE_PATH, useValue: environment.API_BASE_PATH }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(apollo: Apollo, httpLink: HttpLink) {
+    apollo.create({
+      link: httpLink.create({uri: 'https://api.angular.schule/graphql'}),
+      cache: new InMemoryCache()
+    });
+  }
+}
