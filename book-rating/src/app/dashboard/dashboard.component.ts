@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
 
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
@@ -17,7 +18,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.store
       // .getAllHardcoded()
-      .getAllViaSwagger()
+      // .getAllViaSwagger()
+      .getAllViaGraphQL()
+      .pipe(tap(x => console.warn(x)))
       .subscribe(books => this.books = books);
   }
 

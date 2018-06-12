@@ -1,16 +1,44 @@
+import { BookService } from '@angular-schule/book-monkey-api';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Apollo } from 'apollo-angular';
+import { map, take } from 'rxjs/operators';
+
 import { Observable, of } from 'rxjs';
 import { Book } from './book';
-import { catchError, retry } from 'rxjs/operators';
-import { BookService } from '@angular-schule/book-monkey-api';
+
+import gql from 'graphql-tag';
+
+const booksQuery = gql`
+{
+  books {
+    isbn
+    title
+    description,
+    rating
+    thumbnails {
+      url
+    }
+  }
+}
+`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookStoreService {
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private apollo: Apollo
+  ) { }
+
+  getAllViaGraphQL(): Observable<Book[]> {
+
+    return this.apollo.query<any>({
+      query: booksQuery,
+    })
+    .pipe(
+      map(({ data }) => data.books as Book[]),
+    );
+  }
 
   getAllViaSwagger(): Observable<Book[]> {
     return this.bookService.booksGet();
