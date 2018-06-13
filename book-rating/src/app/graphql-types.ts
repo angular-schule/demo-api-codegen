@@ -56,3 +56,25 @@ export interface BookSearchQueryArgs {
 export interface CreateBookMutationArgs {
   book: BookInput;
 }
+export namespace BookList {
+  export type Variables = {};
+
+  export type Query = {
+    __typename?: "Query";
+    books?: (Books | null)[] | null;
+  };
+
+  export type Books = {
+    __typename?: "Book";
+    isbn: string;
+    title?: string | null;
+    description?: string | null;
+    rating?: number | null;
+    thumbnails?: (Thumbnails | null)[] | null;
+  };
+
+  export type Thumbnails = {
+    __typename?: "Thumbnail";
+    url?: string | null;
+  };
+}

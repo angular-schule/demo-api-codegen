@@ -8,18 +8,18 @@ import { Book } from './book';
 
 import gql from 'graphql-tag';
 
-export const booksQuery = gql`
-query BookList {
-  books {
-    isbn
-    title
-    description,
-    rating
-    thumbnails {
-      url
+const booksQuery = gql`
+  query BookList {
+    books {
+      isbn
+      title
+      description,
+      rating
+      thumbnails {
+        url
+      }
     }
   }
-}
 `;
 
 @Injectable({

@@ -8,7 +8,7 @@
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "graphql-codegen": "gql-gen --schema https://api.angular.schule/graphql --template graphql-codegen-typescript-template --out ./src/app/graphql-types.ts ./src/**/*.ts"
+    "graphql-codegen": "gql-gen --schema https://api.angular.schule/graphql --template graphql-codegen-typescript-template --out ./src/app/graphql-types.ts \"./src/**/*.ts\""
   },
   "private": true,
   "dependencies": {
