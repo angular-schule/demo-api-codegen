@@ -30,14 +30,31 @@ export class BookStoreService {
   constructor(private bookService: BookService, private apollo: Apollo
   ) { }
 
-  getAllViaGraphQL(): Observable<Book[]> {
+  getAllViaGraphQL() {
 
     return this.apollo.query<any>({
       query: booksQuery,
     })
     .pipe(
-      map(({ data }) => data.books as Book[]),
+      map(({ data }) => data.books)
     );
+  }
+
+  getAllViaGraphQLWatch() {
+
+    const querRef = this.apollo.watchQuery<any>({
+      query: booksQuery,
+    });
+
+    // querRef.startPolling
+    // querRef.stopPolling
+    // querRef.refetch
+
+    querRef
+      .valueChanges
+      .pipe(
+        map(({ data }) => data.books)
+      );
   }
 
   getAllViaSwagger(): Observable<Book[]> {
