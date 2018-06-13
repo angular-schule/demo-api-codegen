@@ -8,8 +8,8 @@ import { Book } from './book';
 
 import gql from 'graphql-tag';
 
-const booksQuery = gql`
-{
+export const booksQuery = gql`
+query BookList {
   books {
     isbn
     title
