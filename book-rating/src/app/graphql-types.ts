@@ -61,10 +61,10 @@ export namespace BookList {
 
   export type Query = {
     __typename?: "Query";
-    books?: (Books | null)[] | null;
+    book?: (Book | null)[] | null;
   };
 
-  export type Books = {
+  export type Book = {
     __typename?: "Book";
     isbn: string;
     title?: string | null;

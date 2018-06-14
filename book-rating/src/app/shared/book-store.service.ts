@@ -7,10 +7,11 @@ import { Observable, of } from 'rxjs';
 import { Book } from './book';
 
 import gql from 'graphql-tag';
+import { BookList } from '../graphql-types';
 
 const booksQuery = gql`
   query BookList {
-    books {
+    book: books {
       isbn
       title
       description,
@@ -30,13 +31,13 @@ export class BookStoreService {
   constructor(private bookService: BookService, private apollo: Apollo
   ) { }
 
-  getAllViaGraphQL() {
+  getAllViaGraphQL(): Observable<BookList.Book[]> {
 
-    return this.apollo.query<any>({
+    return this.apollo.query<BookList.Query>({
       query: booksQuery,
     })
     .pipe(
-      map(({ data }) => data.books)
+      map(({ data }) => data.book)
     );
   }
 
