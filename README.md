@@ -11,9 +11,9 @@ In this repo you will find code related to the api codegen articles (swagger &am
 
 ## Related Articles
 
-* 2018-04-12 - [Generate Angular API clients with Swagger](https://angular.schule/blog/2018-04-swagger-codegen)
+* 2018-04-12 - [Generating Angular API clients with Swagger](https://angular.schule/blog/2018-04-swagger-codegen)
 * 2018-06-08 - [Swagger Codegen is now OpenAPI Generator](https://angular.schule/blog/2018-06-swagger-codegen-is-now-openapi-generator)
-* 2018-06-10 - [Generate Angular API clients with Apollo and GraphQL code generator](https://angular.schule/blog/2018-06-apollo-graphql-code-generator)
+* 2018-06-10 - [Generating Angular API clients with Apollo and GraphQL code generator](https://angular.schule/blog/2018-06-apollo-graphql-code-generator)
 
 
 ---
