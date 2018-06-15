@@ -5,6 +5,7 @@
 In this repo you will find code related to the api codegen articles (swagger &amp; graphql):
 
 * [book-rating](book-rating) - Demo Angular Application
+* [live demo](https://angular-schule.github.io/demo-api-codegen/)
 * [swagger-codegen](swagger-codegen) - This generates the REST api client for swagger, see [@angular-schule/book-monkey-api](https://www.npmjs.com/package/@angular-schule/book-monkey-api)
 
 
