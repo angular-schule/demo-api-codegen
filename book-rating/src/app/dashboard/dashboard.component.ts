@@ -10,7 +10,7 @@ import { BookStoreService } from '../shared/book-store.service';
 })
 export class DashboardComponent implements OnInit {
 
-  books: Book[] = [];
+  books = [];
 
   constructor(private store: BookStoreService) {
   }

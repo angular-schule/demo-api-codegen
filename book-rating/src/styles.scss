@@ -41,10 +41,14 @@ br-root::before {
   background-position: bottom, center;
   background-repeat: no-repeat;
 
-  width: 100%;
+  width: 105%;
   height: 100%;
   margin-left: -5px;
   transition: ease all 500ms;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .logo {
