@@ -27,7 +27,7 @@ br-root {
   background: linear-gradient(0deg, #FFF 1px, $color_bg_2 1px, $color_bg_1 100%);
   background-position: bottom;
   width: 100%;
-  height: 30%;
+  height: 225px;
   transition: ease all 500ms;
 }
 
@@ -54,4 +54,8 @@ body {
 .logo {
   height: 50px;
   margin-bottom: 20px;
+}
+
+h1, a {
+  position: relative;
 }
