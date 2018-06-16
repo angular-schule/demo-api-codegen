@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test --watch",
+    "deploy": "ng build --prod --base-href=/demo-api-codegen/ && angular-cli-ghpages --dir=dist/book-rating",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "graphql-codegen": "gql-gen --schema https://api.angular.schule/graphql --template graphql-codegen-typescript-template --out ./src/app/graphql-types.ts \"./src/**/*.ts\""
