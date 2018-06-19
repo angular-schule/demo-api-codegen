@@ -7,6 +7,8 @@
   "scripts": {
     "start": "npm run generate && npm run compile && npm run push",
     "generate": "java -jar swagger-codegen-cli.jar generate -i https://api.angular.schule/swagger.json -l typescript-angular -o ./code -c options.json",
+    "generate2": "java -jar openapi-generator-clia.jar generate -i https://api.angular.schule/swagger.json -g typescript-angular -o ./code2 -c options.json",
+
     "compile": "cd code && npm i && npm run build",
     "push": "cd code && npm publish dist --access=public"
   },
