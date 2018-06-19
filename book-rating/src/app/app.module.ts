@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
@@ -26,15 +25,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    // Swagger
-    ApiModule,
-
     // Apollo
     HttpLinkModule,
     ApolloModule
   ],
   providers: [
-    { provide: BASE_PATH, useValue: environment.API_BASE_PATH }
+
   ],
   bootstrap: [AppComponent]
 })

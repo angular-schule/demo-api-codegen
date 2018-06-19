@@ -14,7 +14,7 @@ const booksQuery = gql`
     book: books {
       isbn
       title
-      description,
+      description
       rating
       thumbnails {
         url
@@ -28,47 +28,18 @@ const booksQuery = gql`
 })
 export class BookStoreService {
 
-  constructor(private bookService: BookService, private apollo: Apollo
+  constructor(private apollo: Apollo
   ) { }
 
-  getAllViaGraphQL(): Observable<BookList.Book[]> {
-
-    return this.apollo.query<BookList.Query>({
-      query: booksQuery,
-    })
-    .pipe(
-      map(({ data }) => data.book)
-    );
-  }
-
-  getAllViaGraphQLWatch() {
-
-    const querRef = this.apollo.watchQuery<any>({
-      query: booksQuery,
-    });
-
-    // querRef.startPolling
-    // querRef.stopPolling
-    // querRef.refetch
-
-    querRef
-      .valueChanges
-      .pipe(
-        map(({ data }) => data.books)
-      );
-  }
-
-  getAllViaSwagger(): Observable<Book[]> {
-    return this.bookService.booksGet();
-  }
-
-  getAllHardcoded(): Observable<Book[]> {
+  getAll(): Observable<Book[]> {
 
     return of([{
+
       'isbn': '9783864903571',
       'title': 'Angular',
       'authors': ['Johannes Hoppe', 'Ferdinand Malcher', 'Danny Koppenhagen', 'Gregor Woiwode'],
       'published': '2017-04-01T12:00:00.000Z',
+      //#region
       'subtitle': 'Grundlagen, fortgeschrittene Techniken und Best Practices mit TypeScript'
                 + '- ab Angular 4, inklusive NativeScript und Redux',
       'rating': 5,
@@ -112,6 +83,36 @@ export class BookStoreService {
                    + ' dass Angular sie bei wiederkehrenden Aufgaben wie Datenbindung, Validierung '
                    + 'und Routing unterstützt. Auch der Support durch Google und eine riesige Community'
                    + ' spricht dafür, die leistungsfähige Plattform zu nutzen.'
+      //#endregion
     }]);
+  }
+
+
+
+  getAllViaGraphQL(): Observable<BookList.Book[]> {
+
+    return this.apollo.query<BookList.Query>({
+      query: booksQuery,
+    })
+    .pipe(
+      map(({ data }) => data.book)
+    );
+  }
+
+  getAllViaGraphQLWatch() {
+
+    const querRef = this.apollo.watchQuery<any>({
+      query: booksQuery,
+    });
+
+    // querRef.startPolling
+    // querRef.stopPolling
+    // querRef.refetch
+
+    querRef
+      .valueChanges
+      .pipe(
+        map(({ data }) => data.books)
+      );
   }
 }
