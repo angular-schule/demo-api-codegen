@@ -25,9 +25,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    // Apollo
-    HttpLinkModule,
-    ApolloModule
   ],
   providers: [
 
@@ -36,10 +33,4 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 })
 export class AppModule {
 
-  constructor(apollo: Apollo, httpLink: HttpLink) {
-    apollo.create({
-      link: httpLink.create({uri: 'https://api.angular.schule/graphql'}),
-      cache: new InMemoryCache()
-    });
-  }
 }

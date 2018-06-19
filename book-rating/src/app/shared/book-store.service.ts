@@ -9,27 +9,14 @@ import { Book } from './book';
 import gql from 'graphql-tag';
 import { BookList } from '../graphql-types';
 
-const booksQuery = gql`
-  query BookList {
-    book: books {
-      isbn
-      title
-      description
-      rating
-      thumbnails {
-        url
-      }
-    }
-  }
-`;
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookStoreService {
 
-  constructor(private apollo: Apollo
-  ) { }
+  constructor() { }
 
   getAll(): Observable<Book[]> {
 
@@ -85,34 +72,5 @@ export class BookStoreService {
                    + ' spricht dafür, die leistungsfähige Plattform zu nutzen.'
       //#endregion
     }]);
-  }
-
-
-
-  getAllViaGraphQL(): Observable<BookList.Book[]> {
-
-    return this.apollo.query<BookList.Query>({
-      query: booksQuery,
-    })
-    .pipe(
-      map(({ data }) => data.book)
-    );
-  }
-
-  getAllViaGraphQLWatch() {
-
-    const querRef = this.apollo.watchQuery<any>({
-      query: booksQuery,
-    });
-
-    // querRef.startPolling
-    // querRef.stopPolling
-    // querRef.refetch
-
-    querRef
-      .valueChanges
-      .pipe(
-        map(({ data }) => data.books)
-      );
   }
 }
