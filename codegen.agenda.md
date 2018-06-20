@@ -18,19 +18,26 @@ npm i @angular-schule/book-monkey-api
 
 
 
-
+SNIPPET: sw1
 // app.module.ts
 imports:
   ApiModule,
   
-  
+
+SNIPPET: sw2
 providers: [
     { provide: BASE_PATH, useValue: 'https://api.angular.schule' }
 ],
   
-  
+
+SNIPPET: sw3
 // book-store.service.ts
 constructor(private bookService: BookService)
+
+
+SNIPPET: sw4
+return this.bookService.booksGet();
+
   
   
   
@@ -38,7 +45,9 @@ constructor(private bookService: BookService)
 
 npm i apollo-angular apollo-angular-link-http apollo-client apollo-cache-inmemory graphql-tag graphql
 
-  
+
+SNIPPET: gr1
+
 // app.module.ts
 imports:
   HttpLinkModule,
@@ -46,6 +55,7 @@ imports:
   
   
   
+SNIPPET: gr2
 AppModule {
 
   constructor(apollo: Apollo, httpLink: HttpLink) {
@@ -56,6 +66,8 @@ AppModule {
   }
 
 
+
+SNIPPET: gr3
 // book-store.service.ts
 const booksQuery = gql`
   query BookList {
@@ -82,10 +94,13 @@ npx gql-gen --schema https://api.angular.schule/graphql \
   "./src/**/*.ts"
   
   
+  
+SNIPPET: gr4
 constructor(private apollo: Apollo)
 
 
-  
+
+SNIPPET: gr5
    getAll(): Observable<BookList.Book[]> {
 
     return this.apollo.query<BookList.Query>({
