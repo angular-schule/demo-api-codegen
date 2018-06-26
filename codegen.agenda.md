@@ -1,6 +1,6 @@
 # Swagger
 
-java -jar swagger-codegen-cli.jar generate 
+java -jar swagger-codegen-cli.jar generate \
    -i https://api.angular.schule/swagger.json \
    -l typescript-angular \
    -o ./code \
